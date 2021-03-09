@@ -23,9 +23,11 @@ class BaseCurrency
      */
     public static function create(float $rate, float $amount): BaseCurrency
     {
-        return (new self())
-            ->setRate($rate)
-            ->setAmount($amount);
+        $currency =  (new self());
+        $currency->rate = $rate;
+        $currency->amount = $amount;
+
+        return $currency;
     }
 
     /**
@@ -35,32 +37,11 @@ class BaseCurrency
     {
         return $this->rate;
     }
-
-    /**
-     * @param  float $rate
-     * @return BaseCurrency
-     */
-    private function setRate(float $rate): BaseCurrency
-    {
-        $this->rate = $rate;
-        return $this;
-    }
-
     /**
      * @return float
      */
     public function amount(): float
     {
         return $this->amount;
-    }
-
-    /**
-     * @param  float $amount
-     * @return BaseCurrency
-     */
-    private function setAmount(float $amount): BaseCurrency
-    {
-        $this->amount = $amount;
-        return $this;
     }
 }
